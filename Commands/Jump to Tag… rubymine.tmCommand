@@ -8,8 +8,6 @@
 	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" goto</string>
 	<key>input</key>
 	<string>none</string>
-	<key>keyEquivalent</key>
-	<string>^@ </string>
 	<key>name</key>
 	<string>Jump to Tag… rubymine</string>
 	<key>output</key>

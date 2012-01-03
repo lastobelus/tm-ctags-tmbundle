@@ -10,8 +10,6 @@
 	<string>word</string>
 	<key>input</key>
 	<string>selection</string>
-	<key>keyEquivalent</key>
-	<string>@&lt;</string>
 	<key>name</key>
 	<string>Complete Tag (dialog2)</string>
 	<key>output</key>

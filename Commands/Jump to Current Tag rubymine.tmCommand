@@ -8,8 +8,6 @@
 	<string>"$TM_BUNDLE_SUPPORT/bin/tmctags.rb" find</string>
 	<key>input</key>
 	<string>none</string>
-	<key>keyEquivalent</key>
-	<string>@b</string>
 	<key>name</key>
 	<string>Jump to Current Tag rubymine</string>
 	<key>output</key>
