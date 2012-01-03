@@ -6,7 +6,12 @@ module TM_Ctags
     path = line.split(/\t+/)[1]
     type = line.split(/\t+/)[-2]
     line_no = line[ /line:(\d+)/, 1]
-    file = File.basename(path) + ":" + line_no
+    line_no ||= "1"
+    # begin
+      file = File.basename(path) + ":" + line_no 
+    # rescue => e
+    #   File.open("/tmp/tmctags", "a") { |file| file.puts "problem with #{line}  name: #{name.inspect} path: #{path.inspect} type: #{type.inspect} line_no: #{line_no.inspect} e: #{e.inspect}" }
+    # end
     
     if type =~ /function|method|member/
       args = parse_args( line )

@@ -73,8 +73,11 @@ else
 end
 
 args += base_args
-  
-ctags_bin = ENV['TM_BUNDLE_SUPPORT'] + '/bin/ctags'
+
+ctags_bin = ENV['TM_CTAGS_BIN']
+ctags_bin ||= `which rtags`
+ctags_bin = `which ctags` if ctags_bin.empty?
+ctags_bin = ENV['TM_BUNDLE_SUPPORT'] + '/bin/ctags' if ctags_bin.empty?
   
 Dir.chdir(dir)
 
