@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/textmate.rb'
@@ -8,9 +10,13 @@ module TM_Ctags
    FILE = File.join(ENV['TM_BUNDLE_SUPPORT'], 'backtrack.txt')
 
    class << self
+     def uri_parser
+       @uri_parser ||= URI.const_defined?(:Parser) ? URI::Parser.new : URI
+     end
+          
      def textmate_url(path, line_number, column_number)
        options = []
-       options << "url=file://#{URI.escape(path)}"
+       options << "url=file://#{uri_parser.escape(path)}"
        options << "line=#{line_number}" if line_number
        options << "column=#{column_number}" if column_number
      

@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby -wKU
 
 require ENV['TM_SUPPORT_PATH'] + '/lib/ui.rb'
 require ENV['TM_SUPPORT_PATH'] + '/lib/exit_codes.rb'
@@ -21,6 +21,7 @@ def current_word
   word = ENV['TM_CURRENT_WORD'] unless word
   word
 end
+
 
 # supporting old var for now
 ENV['TM_CTAGS_EXT_LIB'] ||= ENV['TM_CTAGS_EXTRA_LIB']
@@ -46,6 +47,7 @@ end
 tag_files.uniq!
 
 RESULT_LIMIT = ENV['TM_CTAGS_RESULT_LIMIT'] || 300
+
 
 action = ARGV[0]
 nib_title = "Jump to Tag…"
@@ -73,7 +75,7 @@ hits = []
 index = 1
 
 tag_files.each do |f|
-  tags = File.read( f ).grep( regex )
+  tags = File.read( f ).lines.grep( regex )
 
   tags.each do |line|
     hit = TM_Ctags::parse( line )
@@ -88,6 +90,7 @@ end
 hits = hits.sort_by { |h| h['file'].index("#{ENV['TM_FILENAME']}:") == 0 ? "" : h['file'] }.each_with_index {|h, i| h['index'] = i }
 
 TextMate.exit_show_tool_tip "'#{word}' not found." if hits.length == 0
+
 
 TM_Ctags::Backtrack.push
 

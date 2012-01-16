@@ -1,0 +1,13 @@
+--- SharedSupport/Support/lib/ui.new.rb	2012-01-15 18:12:34.000000000 -0800
++++ SharedSupport/Support/lib/ui.old.rb	2012-01-15 18:12:53.000000000 -0800
+@@ -127,8 +127,8 @@
+       # and the result of the block inserted as a snippet
+       def complete(choices, options = {}, &block) #  :yields: choice
+         pid = fork do
+-          STDOUT.reopen(open('/dev/null'), 'w')
+-          STDERR.reopen(open('/dev/null'), 'w')
++          STDOUT.reopen(open('/dev/null'))
++          STDERR.reopen(open('/dev/null'))
+ 
+           unless options.has_key? :initial_filter
+             require ENV['TM_SUPPORT_PATH'] + '/lib/current_word'
